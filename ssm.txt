@@ -1,0 +1,51 @@
+1.ssm整合
+	配置文件    
+		web.xml       在web.xml配置文件中核心控制器DispatcherServlet
+
+			一个servlet
+				DispatcherServlet
+				初始化参数		-->加载springmvc.xml
+				
+                                                   load-on-startup     <!-- 配置servlet启动时加载对象 -->
+			一个过滤器
+				中文乱码
+			一个监听器
+				ContextLoaderListener
+				全局初始化参数	-->applicationContext.xml
+                                           <listener>
+		          <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	                          </listener>
+	                    <!--设置配置文件的路径-->
+	                   <context-param>
+		   <param-name>contextConfigLocation</param-name>
+		   <param-value>classpath:applicationContext.xml</param-value>
+	                   </context-param>
+
+		applicationContext.xml
+			扫描包(排除controller)
+			数据源
+			事务管理器
+			sqlsessionfactorybean
+			mapper扫描
+			tx:advice
+			aop-config
+		springmvc.xml
+			扫描包只扫描controller
+			视图解析器
+			过滤静态资源
+			开启注解支持
+			
+	web
+		@Controller
+		@RequestMapping
+		
+		@Autowired
+	service
+		@Service
+		@Autowired
+	dao
+		
+		@Select
+		@Update
+		@Delete
+		...
